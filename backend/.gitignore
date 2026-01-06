@@ -1,5 +1,5 @@
 # ===============================
-# Environment Variables
+# Environment variables
 # ===============================
 .env
 .env.*
@@ -9,48 +9,34 @@
 # Dependencies
 # ===============================
 node_modules/
-.pnp/
-.pnp.js
 
 # ===============================
-# Logs
-# ===============================
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-bun-debug.log*
-
-# ===============================
-# Build / Transpiled Output
+# Build / Transpiled output
 # ===============================
 dist/
 build/
 coverage/
 
 # ===============================
-# OS / Editor junk
+# Logs
 # ===============================
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
+*.log
+logs/
 
 # ===============================
-# Runtime data
+# Runtime / temp
 # ===============================
 *.pid
 *.seed
 *.pid.lock
 
 # ===============================
-# MongoDB / Local DB files
+# MongoDB local data
 # ===============================
 data/
 dump/
 
 # ===============================
-# Testing
+# Docker (backend-specific)
 # ===============================
-.jest/
+docker-data/
