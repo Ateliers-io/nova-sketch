@@ -4,10 +4,10 @@
 node_modules/
 
 # ===============================
-# Bun
+# Package Manager (pnpm)
 # ===============================
-.bun
-bun.lockb
+.pnpm-store/
+.pnpm-debug.log
 
 # ===============================
 # Environment variables
@@ -22,6 +22,13 @@ bun.lockb
 dist/
 build/
 coverage/
+*.tsbuildinfo
+
+# ===============================
+# Vite
+# ===============================
+.vite/
+*.local
 
 # ===============================
 # Docker
@@ -30,9 +37,21 @@ coverage/
 docker-compose.override.yml
 
 # ===============================
-# Logs
+# Logs & Debug
 # ===============================
 *.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ===============================
+# Testing
+# ===============================
+coverage/
+.nyc_output/
+*.lcov
 
 # ===============================
 # OS / Editor junk
@@ -41,3 +60,13 @@ docker-compose.override.yml
 Thumbs.db
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# ===============================
+# Misc
+# ===============================
+.cache/
+.temp/
+.tmp/
