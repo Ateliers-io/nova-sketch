@@ -23,6 +23,13 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
+// Middleware
+app.use(express.json());
+
+// Routes
+import authRoutes from "./routes/authRoutes.js";
+app.use("/api/auth", authRoutes);
+
 // Map<RoomID, { doc: Y.Doc, clients: Set<WebSocket> }>
 const rooms = new Map();
 
