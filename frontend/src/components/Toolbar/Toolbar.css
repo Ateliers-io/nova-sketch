@@ -5,92 +5,115 @@
     transform: translateX(-50%);
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-    padding: 12px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 8px 16px;
     display: flex;
-    gap: 24px;
+    align-items: center;
+    gap: 16px;
     z-index: 100;
+    flex-wrap: wrap;
+}
+
+.toolbar-separator {
+    width: 1px;
+    height: 24px;
+    background-color: #e0e0e0;
+    margin: 0 4px;
 }
 
 .toolbar-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .toolbar-group label {
-    font-size: 13px;
-    font-weight: 500;
-    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
+/* --- Range Input --- */
 .toolbar-group input[type="range"] {
-    width: 100px;
+    width: 80px;
     cursor: pointer;
+    accent-color: #4a90e2;
 }
 
 .brush-size-value {
     font-size: 12px;
     color: #666;
-    min-width: 32px;
+    min-width: 28px;
+    text-align: center;
 }
 
-/* Tool buttons - pen and eraser */
+/* --- Buttons (Tools & Formatting) --- */
+.tool-buttons {
+    display: flex;
+    gap: 4px;
+}
+
 .tool-btn {
     width: 32px;
     height: 32px;
-    border: 2px solid #ddd;
+    border: 1px solid transparent;
     border-radius: 6px;
-    background: #fff;
+    background: transparent;
     cursor: pointer;
     font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.15s;
+    transition: all 0.2s ease;
+    color: #444;
 }
 
 .tool-btn:hover {
-    border-color: #999;
-    background: #f5f5f5;
+    background: #f0f4f8;
+    color: #4a90e2;
 }
 
 .tool-btn.active {
-    border-color: #333;
-    background: #e8e8e8;
+    background: #e1effe;
+    color: #1a73e8;
+    border-color: #cce0ff;
 }
 
-/* Color picker - circle with native color input */
+/* --- Color Picker --- */
 .color-input-wrapper {
     position: relative;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ddd;
+    transition: transform 0.1s, border-color 0.2s;
+}
+
+.color-input-wrapper:hover {
+    transform: scale(1.1);
+    border-color: #bbb;
 }
 
 .color-input {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
     opacity: 0;
     cursor: pointer;
 }
 
 .color-circle {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: 2px solid #333;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    transition: transform 0.1s;
 }
 
-.color-input-wrapper:hover .color-circle {
-    transform: scale(1.1);
-}
-
-/* Eraser dropdown */
+/* --- Eraser Dropdown --- */
 .eraser-wrapper {
     position: relative;
 }
@@ -154,4 +177,35 @@
     font-size: 11px;
     color: #666;
     min-width: 35px;
+}
+
+/* --- Text Specific Inputs --- */
+.font-select {
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 4px;
+    font-size: 13px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+}
+
+.font-select:focus {
+    border-color: #4a90e2;
+}
+
+.font-size-input {
+    width: 48px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 4px;
+    font-size: 13px;
+    text-align: center;
+    outline: none;
+}
+
+.font-size-input:focus {
+    border-color: #4a90e2;
 }
