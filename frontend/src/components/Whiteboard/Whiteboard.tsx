@@ -201,7 +201,9 @@ export default function Whiteboard() {
 
     if (activeTool === 'eraser') {
       if (eraserMode === 'stroke') {
-        // Stroke mode: delete entire stroke under cursor
+        // Stroke Eraser: Completely delete specific objects
+        // 1. Identify stroke under cursor using hit testing
+        // 2. Filter it out of the state array to remove it
         const hitId = findStrokeAtPosition(pos.x, pos.y, lines, eraserSize / 2);
         if (hitId) {
           setLines(lines.filter((line) => line.id !== hitId));
