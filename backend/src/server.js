@@ -7,19 +7,13 @@ import * as syncProtocol from "y-protocols/sync";
 import * as awarenessProtocol from "y-protocols/awareness";
 import { encoding, decoding } from "lib0";
 import "dotenv/config";
+import connectDB from "./config/db.js";
 
 // 1. CONFIGURATION
-
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGO_URI;
 
 // 2. DB SETUP
-try {
-  await mongoose.connect(MONGO_URI);
-  console.log("✅ Connected to MongoDB");
-} catch (err) {
-  console.error("❌ DB Connection Error:", err);
-}
+await connectDB();
 
 const RoomSchema = new mongoose.Schema({ _id: String, data: Buffer });
 const Room = mongoose.model("Room", RoomSchema);
@@ -41,7 +35,7 @@ app.get("/health", (req, res) => res.json({ status: "OK" }));
 const broadcastToRoom = (roomId, message) => {
   const room = rooms.get(roomId);
   if (!room) return;
-  
+
   room.clients.forEach(client => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(message);
@@ -59,10 +53,10 @@ const getOrCreateRoom = async (roomId) => {
 
   console.log(`📂 Creating/Loading Room: ${roomId}`);
   const doc = new Y.Doc();
-  
+
   // Important: Initialize Awareness correctly
   doc.awareness = new awarenessProtocol.Awareness(doc);
-  
+
   const roomState = { doc, clients: new Set() };
   rooms.set(roomId, roomState);
 
@@ -91,7 +85,7 @@ const getOrCreateRoom = async (roomId) => {
       }
     }, 2000);
   };
-  
+
   // C. Setup ONE Listener for Drawing Updates
   doc.on('update', (update, origin) => {
     // Save to DB
@@ -176,7 +170,7 @@ wss.on("connection", async (ws, req) => {
     room.clients.delete(ws);
     // Optional: If room empty, verify logic to remove from memory
     if (room.clients.size === 0) {
-       // logic to clear memory if desired
+      // logic to clear memory if desired
     }
   });
 });
