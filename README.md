@@ -2,7 +2,7 @@
 
 NovaSketch is a distributed digital canvas and creative workspace built to facilitate seamless, real-time co-creation between remote users. This repository serves as the **Main Orchestrator**, managing both the frontend and backend architectures as submodules to provide a unified development environment.
 
-## 🏗️ Project Structure
+## Project Structure
 
 NovaSketch is organized into two primary sub-systems:
 
@@ -11,7 +11,8 @@ NovaSketch is organized into two primary sub-systems:
 
 ---
 
-## 🛠️ Backend Architecture & Capabilities
+## 
+Backend Architecture & Capabilities
 
 The backend serves as the authoritative synchronization engine for the collaborative workspace.
 
